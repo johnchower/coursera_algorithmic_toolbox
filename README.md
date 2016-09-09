@@ -1,2 +1,3 @@
 # coursera_algorithmic_toolbox
-Coursera Course - The Algorithmic Toolbox
+Collection of scripts and programs that I'm writing as part of the 
+Coursera "Algorithmic Toolbox" course.

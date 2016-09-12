@@ -79,6 +79,37 @@ def fibmod(n,m):
     if n <= 1:
         out = n
     else:
-        out = 3
+        x =  create_pattern(m, n)
+        pattern_is_full = x[0]
+        fiblist = x[1]
+
+        if pattern_is_full:
+            pattern_length = len(fiblist)
+            position = quotient_remainder(n, pattern_length)[1] 
+            out = fiblist[position]
+        else: 
+            out = fiblist[-1]
+
     return out 
+
+def fibsum(n,m):
+    if n <= 1:
+        out = n
+    else:
+        x =  create_pattern(m, n)
+        pattern_is_full = x[0]
+        fiblist = x[1]
+
+        if pattern_is_full:
+            cycle_sum = sum(fiblist)
+            pattern_length = len(fiblist)
+            qr = quotient_remainder(n, pattern_length)
+            position = qr[1] 
+            number_of_cycles = qr[0]
+            partial_sum = sum(fiblist[0:position+1]) 
+            out = partial_sum + number_of_cycles*cycle_sum
+
+        else:
+            out = sum(fiblist)
+
 

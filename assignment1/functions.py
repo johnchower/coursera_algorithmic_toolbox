@@ -1,3 +1,5 @@
+import math
+
 def quotient_remainder(n,d):
     q = int(n/d)
     r = n - d*q
@@ -43,11 +45,11 @@ def fib(n):
     # A flag telling the user why the exit was made.
     # The list that was produced.
 
-def create_pattern(m, n=-1, zeroth = 0, first = 1):
+def create_pattern(m, n=math.inf, zeroth = 0, first = 1):
     fiblist = [zeroth, first]
     i = 1
     pattern_repeats = False
-    while (i > n) & (not pattern_repeats):
+    while (i < n) & (not pattern_repeats):
         newfib = fiblist[i-1] + fiblist[i] 
         newfib = quotient_remainder(newfib, m)[1]
         fiblist.append(newfib)
@@ -77,22 +79,6 @@ def fibmod(n,m):
     if n <= 1:
         out = n
     else:
-        pattern_fib = [0,1]
-        pattern_repeats = False
-        i = 2
-        while (not pattern_repeats) & (len(pattern_fib)-1 < n):
-            newfib = pattern_fib[i-2] + pattern_fib[i-1]        
-            newfib = quotient_remainder(newfib, m)[1]
-            pattern_fib.append(newfib)
-            pattern_repeats = (pattern_fib[-1] == 1) & (pattern_fib[-2] == (m-1))
-            i += 1 
-        if pattern_repeats:
-            pattern_length = len(pattern_fib)
-            position = quotient_remainder(n, pattern_length)[1]
-            out = pattern_fib[position]
-        elif len(pattern_fib)-1 == n:
-            out = pattern_fib[-1]
-        else: out = "Something went wrong..."
-    
+        out = 3
     return out 
 
